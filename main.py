@@ -1,11 +1,12 @@
 from PySide2.QtWidgets import QMainWindow, QApplication
-from dsg.LoginScreen import LoginScreen
+from src.dsg.uicode_src.LoginScreen import LoginScreen
 
 
 class MainWindow(QMainWindow, LoginScreen):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
+
 
 
 if __name__ == "__main__":
