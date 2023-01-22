@@ -1,18 +1,26 @@
 from PySide2.QtWidgets import QMainWindow, QApplication
-from src.dsg.uicode_src.LoginScreen import LoginScreen
+from src.dsg.uicode.LoginScreen import LoginScreen
+from src.dsg.Forms.MainForm import MainForm
 
 
-class MainWindow(QMainWindow, LoginScreen):
+class MainScreen(QMainWindow, LoginScreen):
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super(MainScreen, self).__init__()
+        self.win = None
         self.setupUi(self)
+        self.pushButton_2.clicked.connect(self.switch_on_main_screen)
 
+    def switch_on_main_screen(self):
+        self.win = MainForm()
+        self.win.show()
+        self.close()
 
 
 if __name__ == "__main__":
     import sys
+
     app = QApplication(sys.argv)
 
-    win = MainWindow()
+    win = MainScreen()
     win.show()
     sys.exit(app.exec_())

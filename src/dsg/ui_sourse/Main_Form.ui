@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="schedule">
+    <property name="title">
+     <string>Расписание</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="show_act"/>
+    <addaction name="edit_act"/>
+    <addaction name="select_act"/>
+   </widget>
+   <widget class="QMenu" name="service">
+    <property name="title">
+     <string>Сервисы</string>
+    </property>
+    <addaction name="write_act"/>
+    <addaction name="schdl_act"/>
+    <addaction name="list_srvc"/>
+   </widget>
+   <widget class="QMenu" name="profile">
+    <property name="title">
+     <string>Профиль</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="exit">
+    <property name="title">
+     <string>Выход</string>
+    </property>
+   </widget>
+   <addaction name="schedule"/>
+   <addaction name="service"/>
+   <addaction name="profile"/>
+   <addaction name="exit"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="show_schdle">
+   <property name="text">
+    <string>Показать...</string>
+   </property>
+  </action>
+  <action name="show_act">
+   <property name="text">
+    <string>Показать...</string>
+   </property>
+  </action>
+  <action name="edit_act">
+   <property name="text">
+    <string>Редактировать...</string>
+   </property>
+  </action>
+  <action name="select_act">
+   <property name="text">
+    <string>Выборка</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>Профиль</string>
+   </property>
+  </action>
+  <action name="write_act">
+   <property name="text">
+    <string>Запись на услугу</string>
+   </property>
+  </action>
+  <action name="schdl_act">
+   <property name="text">
+    <string>Расписание услуг</string>
+   </property>
+  </action>
+  <action name="list_srvc">
+   <property name="text">
+    <string>Список услуг</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
