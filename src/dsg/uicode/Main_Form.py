@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(549, 462)
+        MainWindow.resize(779, 463)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -44,6 +44,10 @@ class Ui_MainWindow(object):
         self.profile_act.setObjectName(u"profile_act")
         self.exit_act = QAction(MainWindow)
         self.exit_act.setObjectName(u"exit_act")
+        self.add_schdl_act = QAction(MainWindow)
+        self.add_schdl_act.setObjectName(u"add_schdl_act")
+        self.action = QAction(MainWindow)
+        self.action.setObjectName(u"action")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -94,9 +98,10 @@ class Ui_MainWindow(object):
         self.ShowSchedule.setObjectName(u"ShowSchedule")
         self.gridLayout_5 = QGridLayout(self.ShowSchedule)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.schdl_upd_tb = QPushButton(self.ShowSchedule)
+        self.schdl_upd_tb.setObjectName(u"schdl_upd_tb")
 
-        self.gridLayout_5.addItem(self.horizontalSpacer_4, 2, 2, 1, 1)
+        self.gridLayout_5.addWidget(self.schdl_upd_tb, 5, 1, 1, 1)
 
         self.label_2 = QLabel(self.ShowSchedule)
         self.label_2.setObjectName(u"label_2")
@@ -105,20 +110,19 @@ class Ui_MainWindow(object):
         self.label_2.setFont(font1)
         self.label_2.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_5.addWidget(self.label_2, 0, 0, 1, 3)
+        self.gridLayout_5.addWidget(self.label_2, 1, 0, 1, 3)
 
         self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_5.addItem(self.horizontalSpacer_3, 2, 0, 1, 1)
+        self.gridLayout_5.addItem(self.horizontalSpacer_3, 5, 0, 1, 1)
 
-        self.schdl_upd_tb = QPushButton(self.ShowSchedule)
-        self.schdl_upd_tb.setObjectName(u"schdl_upd_tb")
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_5.addWidget(self.schdl_upd_tb, 2, 1, 1, 1)
+        self.gridLayout_5.addItem(self.horizontalSpacer_4, 5, 2, 1, 1)
 
         self.schdl_lesson_tb = QTableWidget(self.ShowSchedule)
-        if (self.schdl_lesson_tb.columnCount() < 6):
-            self.schdl_lesson_tb.setColumnCount(6)
+        if (self.schdl_lesson_tb.columnCount() < 7):
+            self.schdl_lesson_tb.setColumnCount(7)
         __qtablewidgetitem = QTableWidgetItem()
         self.schdl_lesson_tb.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -131,9 +135,23 @@ class Ui_MainWindow(object):
         self.schdl_lesson_tb.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
         self.schdl_lesson_tb.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.schdl_lesson_tb.setHorizontalHeaderItem(6, __qtablewidgetitem6)
         self.schdl_lesson_tb.setObjectName(u"schdl_lesson_tb")
 
-        self.gridLayout_5.addWidget(self.schdl_lesson_tb, 1, 0, 1, 3)
+        self.gridLayout_5.addWidget(self.schdl_lesson_tb, 3, 0, 1, 3)
+
+        self.verticalSpacer_11 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.gridLayout_5.addItem(self.verticalSpacer_11, 0, 0, 1, 1)
+
+        self.verticalSpacer_12 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.gridLayout_5.addItem(self.verticalSpacer_12, 2, 0, 1, 1)
+
+        self.verticalSpacer_13 = QSpacerItem(10, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.gridLayout_5.addItem(self.verticalSpacer_13, 4, 1, 1, 1)
 
         self.stackedWidget.addWidget(self.ShowSchedule)
         self.EditScreen = QWidget()
@@ -156,40 +174,47 @@ class Ui_MainWindow(object):
 
         self.gridLayout_3.addItem(self.horizontalSpacer_8, 5, 0, 1, 1)
 
-        self.formLayout = QFormLayout()
-        self.formLayout.setObjectName(u"formLayout")
-        self.formLayout.setLabelAlignment(Qt.AlignCenter)
-        self.formLayout.setFormAlignment(Qt.AlignHCenter|Qt.AlignTop)
-        self.formLayout.setHorizontalSpacing(100)
-        self.formLayout.setVerticalSpacing(30)
-        self.date_lbl = QLabel(self.EditScreen)
-        self.date_lbl.setObjectName(u"date_lbl")
+        self.gridLayout_4 = QGridLayout()
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.gridLayout_4.setHorizontalSpacing(100)
+        self.gridLayout_4.setVerticalSpacing(30)
+        self.lessob_lbl = QLabel(self.EditScreen)
+        self.lessob_lbl.setObjectName(u"lessob_lbl")
         font2 = QFont()
         font2.setPointSize(13)
-        self.date_lbl.setFont(font2)
+        self.lessob_lbl.setFont(font2)
 
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.date_lbl)
+        self.gridLayout_4.addWidget(self.lessob_lbl, 2, 0, 1, 1)
 
-        self.dateEdit = QDateEdit(self.EditScreen)
-        self.dateEdit.setObjectName(u"dateEdit")
-        sizePolicy2.setHeightForWidth(self.dateEdit.sizePolicy().hasHeightForWidth())
-        self.dateEdit.setSizePolicy(sizePolicy2)
+        self.lesson_cb = QComboBox(self.EditScreen)
+        self.lesson_cb.setObjectName(u"lesson_cb")
+        self.lesson_cb.setFont(font2)
 
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.dateEdit)
+        self.gridLayout_4.addWidget(self.lesson_cb, 2, 2, 1, 1)
 
-        self.time_lb = QLabel(self.EditScreen)
-        self.time_lb.setObjectName(u"time_lb")
-        self.time_lb.setFont(font2)
+        self.teacher_cb = QComboBox(self.EditScreen)
+        self.teacher_cb.setObjectName(u"teacher_cb")
+        self.teacher_cb.setFont(font2)
 
-        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.time_lb)
+        self.gridLayout_4.addWidget(self.teacher_cb, 3, 2, 1, 1)
 
-        self.timeEdit = QTimeEdit(self.EditScreen)
-        self.timeEdit.setObjectName(u"timeEdit")
-        sizePolicy2.setHeightForWidth(self.timeEdit.sizePolicy().hasHeightForWidth())
-        self.timeEdit.setSizePolicy(sizePolicy2)
-        self.timeEdit.setMinimumSize(QSize(200, 0))
+        self.audition = QLabel(self.EditScreen)
+        self.audition.setObjectName(u"audition")
+        self.audition.setFont(font2)
 
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.timeEdit)
+        self.gridLayout_4.addWidget(self.audition, 4, 0, 1, 1)
+
+        self.teacher = QLabel(self.EditScreen)
+        self.teacher.setObjectName(u"teacher")
+        self.teacher.setFont(font2)
+
+        self.gridLayout_4.addWidget(self.teacher, 3, 0, 1, 1)
+
+        self.aud_cb = QComboBox(self.EditScreen)
+        self.aud_cb.setObjectName(u"aud_cb")
+        self.aud_cb.setFont(font2)
+
+        self.gridLayout_4.addWidget(self.aud_cb, 4, 2, 1, 1)
 
         self.type_lesson_lbl = QLabel(self.EditScreen)
         self.type_lesson_lbl.setObjectName(u"type_lesson_lbl")
@@ -197,48 +222,32 @@ class Ui_MainWindow(object):
         self.type_lesson_lbl.setSizePolicy(sizePolicy)
         self.type_lesson_lbl.setFont(font2)
 
-        self.formLayout.setWidget(3, QFormLayout.LabelRole, self.type_lesson_lbl)
+        self.gridLayout_4.addWidget(self.type_lesson_lbl, 1, 0, 1, 1)
 
-        self.lesson_cb = QComboBox(self.EditScreen)
-        self.lesson_cb.setObjectName(u"lesson_cb")
+        self.date_lbl = QLabel(self.EditScreen)
+        self.date_lbl.setObjectName(u"date_lbl")
+        self.date_lbl.setFont(font2)
 
-        self.formLayout.setWidget(3, QFormLayout.FieldRole, self.lesson_cb)
+        self.gridLayout_4.addWidget(self.date_lbl, 0, 0, 1, 1)
 
-        self.lessob_lbl = QLabel(self.EditScreen)
-        self.lessob_lbl.setObjectName(u"lessob_lbl")
-        self.lessob_lbl.setFont(font2)
+        self.type_lesson_cb = QComboBox(self.EditScreen)
+        self.type_lesson_cb.setObjectName(u"type_lesson_cb")
+        self.type_lesson_cb.setFont(font2)
 
-        self.formLayout.setWidget(4, QFormLayout.LabelRole, self.lessob_lbl)
+        self.gridLayout_4.addWidget(self.type_lesson_cb, 1, 2, 1, 1)
 
-        self.lesson_cb_2 = QComboBox(self.EditScreen)
-        self.lesson_cb_2.setObjectName(u"lesson_cb_2")
+        self.horizontalSpacer_6 = QSpacerItem(80, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
-        self.formLayout.setWidget(4, QFormLayout.FieldRole, self.lesson_cb_2)
+        self.gridLayout_4.addItem(self.horizontalSpacer_6, 0, 1, 1, 1)
 
-        self.teacher = QLabel(self.EditScreen)
-        self.teacher.setObjectName(u"teacher")
-        self.teacher.setFont(font2)
+        self.dateTimeEdit = QDateTimeEdit(self.EditScreen)
+        self.dateTimeEdit.setObjectName(u"dateTimeEdit")
+        self.dateTimeEdit.setFont(font2)
 
-        self.formLayout.setWidget(5, QFormLayout.LabelRole, self.teacher)
-
-        self.teacher_cb = QComboBox(self.EditScreen)
-        self.teacher_cb.setObjectName(u"teacher_cb")
-
-        self.formLayout.setWidget(5, QFormLayout.FieldRole, self.teacher_cb)
-
-        self.audition = QLabel(self.EditScreen)
-        self.audition.setObjectName(u"audition")
-        self.audition.setFont(font2)
-
-        self.formLayout.setWidget(6, QFormLayout.LabelRole, self.audition)
-
-        self.aud_cb = QComboBox(self.EditScreen)
-        self.aud_cb.setObjectName(u"aud_cb")
-
-        self.formLayout.setWidget(6, QFormLayout.FieldRole, self.aud_cb)
+        self.gridLayout_4.addWidget(self.dateTimeEdit, 0, 2, 1, 1)
 
 
-        self.gridLayout_3.addLayout(self.formLayout, 5, 3, 1, 1)
+        self.gridLayout_3.addLayout(self.gridLayout_4, 5, 3, 1, 1)
 
         self.horizontalSpacer_11 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -378,20 +387,20 @@ class Ui_MainWindow(object):
         self.tableWidget_2 = QTableWidget(self.Schedule_Of_Service)
         if (self.tableWidget_2.columnCount() < 7):
             self.tableWidget_2.setColumnCount(7)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(0, __qtablewidgetitem6)
         __qtablewidgetitem7 = QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(1, __qtablewidgetitem7)
+        self.tableWidget_2.setHorizontalHeaderItem(0, __qtablewidgetitem7)
         __qtablewidgetitem8 = QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(2, __qtablewidgetitem8)
+        self.tableWidget_2.setHorizontalHeaderItem(1, __qtablewidgetitem8)
         __qtablewidgetitem9 = QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(3, __qtablewidgetitem9)
+        self.tableWidget_2.setHorizontalHeaderItem(2, __qtablewidgetitem9)
         __qtablewidgetitem10 = QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(4, __qtablewidgetitem10)
+        self.tableWidget_2.setHorizontalHeaderItem(3, __qtablewidgetitem10)
         __qtablewidgetitem11 = QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(5, __qtablewidgetitem11)
+        self.tableWidget_2.setHorizontalHeaderItem(4, __qtablewidgetitem11)
         __qtablewidgetitem12 = QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(6, __qtablewidgetitem12)
+        self.tableWidget_2.setHorizontalHeaderItem(5, __qtablewidgetitem12)
+        __qtablewidgetitem13 = QTableWidgetItem()
+        self.tableWidget_2.setHorizontalHeaderItem(6, __qtablewidgetitem13)
         self.tableWidget_2.setObjectName(u"tableWidget_2")
 
         self.gridLayout_11.addWidget(self.tableWidget_2, 1, 0, 1, 3)
@@ -468,7 +477,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 549, 21))
+        self.menubar.setGeometry(QRect(0, 0, 779, 21))
         self.schedule = QMenu(self.menubar)
         self.schedule.setObjectName(u"schedule")
         self.service = QMenu(self.menubar)
@@ -486,14 +495,16 @@ class Ui_MainWindow(object):
         self.schedule.addSeparator()
         self.schedule.addAction(self.show_schdl_act)
         self.schedule.addAction(self.edit_schdl_act)
+        self.schedule.addAction(self.add_schdl_act)
         self.service.addAction(self.write_srvc_act)
         self.service.addAction(self.schdl_srvc_act)
         self.programm.addAction(self.profile_act)
+        self.programm.addAction(self.action)
         self.programm.addAction(self.exit_act)
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -511,29 +522,32 @@ class Ui_MainWindow(object):
         self.list_srvc.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043f\u0438\u0441\u043e\u043a \u0443\u0441\u043b\u0443\u0433", None))
         self.profile_act.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0444\u0438\u043b\u044c", None))
         self.exit_act.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0445\u043e\u0434", None))
+        self.add_schdl_act.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
+        self.action.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438", None))
         self.greeting_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c", None))
         self.begin_work.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0447\u0430\u043b\u043e \u0440\u0430\u0431\u043e\u0442\u044b", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0437\u0430\u043d\u044f\u0442\u0438\u0439", None))
         self.schdl_upd_tb.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0437\u0430\u043d\u044f\u0442\u0438\u0439", None))
         ___qtablewidgetitem = self.schdl_lesson_tb.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043d\u044f\u0442\u0438\u0435", None));
         ___qtablewidgetitem1 = self.schdl_lesson_tb.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0442\u043e\u0440\u043d\u0438\u043a", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0447\u0438\u0442\u0435\u043b\u044c", None));
         ___qtablewidgetitem2 = self.schdl_lesson_tb.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0440\u0435\u0434\u0430", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0435\u043d\u044c", None));
         ___qtablewidgetitem3 = self.schdl_lesson_tb.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"\u0427\u0435\u0442\u0432\u0435\u0440\u0433", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0447\u0435\u043d\u0438\u043a", None));
         ___qtablewidgetitem4 = self.schdl_lesson_tb.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"\u041f\u044f\u0442\u043d\u0438\u0446\u0430", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0438\u043f \u0417\u0430\u043d\u0442\u0438\u0439", None));
         ___qtablewidgetitem5 = self.schdl_lesson_tb.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0443\u0431\u0431\u043e\u0442\u0430", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"\u0410\u0443\u0434\u0438\u0442\u043e\u0440\u0438\u044f", None));
+        ___qtablewidgetitem6 = self.schdl_lesson_tb.horizontalHeaderItem(6)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0440\u0435\u043c\u044f \u0438 \u0414\u0430\u0442\u0430", None));
         self.send_btn.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c", None))
-        self.date_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430:", None))
-        self.time_lb.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0440\u0435\u043c\u044f", None))
-        self.type_lesson_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0438\u043f \u0417\u0430\u043d\u044f\u0442\u0438\u0439", None))
         self.lessob_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043d\u044f\u0442\u0438\u0435", None))
-        self.teacher.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c", None))
         self.audition.setText(QCoreApplication.translate("MainWindow", u"\u0410\u0443\u0434\u0438\u0442\u043e\u0440\u0438\u044f", None))
+        self.teacher.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c", None))
+        self.type_lesson_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0438\u043f \u0417\u0430\u043d\u044f\u0442\u0438\u0439", None))
+        self.date_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u0438 \u0412\u0440\u0435\u043c\u044f:", None))
         self.executor_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0441\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c", None))
         self.type_of_service_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0438\u043f \u0423\u0441\u043b\u0443\u0433\u0438", None))
         self.send_btn_srvc.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c", None))
@@ -541,20 +555,20 @@ class Ui_MainWindow(object):
         self.name_of_service.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0441\u043b\u0443\u0433\u0430", None))
         self.update_service_tb_btn.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0423\u0441\u043b\u0443\u0433", None))
-        ___qtablewidgetitem6 = self.tableWidget_2.horizontalHeaderItem(0)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a", None));
-        ___qtablewidgetitem7 = self.tableWidget_2.horizontalHeaderItem(1)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0442\u043e\u0440\u043d\u0438\u043a", None));
-        ___qtablewidgetitem8 = self.tableWidget_2.horizontalHeaderItem(2)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0440\u0435\u0434\u0430", None));
-        ___qtablewidgetitem9 = self.tableWidget_2.horizontalHeaderItem(3)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"New Column", None));
-        ___qtablewidgetitem10 = self.tableWidget_2.horizontalHeaderItem(4)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"\u0427\u0435\u0442\u0432\u0435\u0440\u0433", None));
-        ___qtablewidgetitem11 = self.tableWidget_2.horizontalHeaderItem(5)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"\u041f\u044f\u0442\u043d\u0438\u0446\u0430", None));
-        ___qtablewidgetitem12 = self.tableWidget_2.horizontalHeaderItem(6)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"\u0412\u043e\u0441\u043a\u0440\u0435\u0441\u043d\u044c\u0435", None));
+        ___qtablewidgetitem7 = self.tableWidget_2.horizontalHeaderItem(0)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u043d\u0435\u0434\u0435\u043b\u044c\u043d\u0438\u043a", None));
+        ___qtablewidgetitem8 = self.tableWidget_2.horizontalHeaderItem(1)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0442\u043e\u0440\u043d\u0438\u043a", None));
+        ___qtablewidgetitem9 = self.tableWidget_2.horizontalHeaderItem(2)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0440\u0435\u0434\u0430", None));
+        ___qtablewidgetitem10 = self.tableWidget_2.horizontalHeaderItem(3)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"New Column", None));
+        ___qtablewidgetitem11 = self.tableWidget_2.horizontalHeaderItem(4)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"\u0427\u0435\u0442\u0432\u0435\u0440\u0433", None));
+        ___qtablewidgetitem12 = self.tableWidget_2.horizontalHeaderItem(5)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"\u041f\u044f\u0442\u043d\u0438\u0446\u0430", None));
+        ___qtablewidgetitem13 = self.tableWidget_2.horizontalHeaderItem(6)
+        ___qtablewidgetitem13.setText(QCoreApplication.translate("MainWindow", u"\u0412\u043e\u0441\u043a\u0440\u0435\u0441\u043d\u044c\u0435", None));
         self.spec_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f:", None))
         self.spec_field_lbl.setText(QCoreApplication.translate("MainWindow", u"<????????????????>", None))
         self.post_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u043b\u0436\u043d\u043e\u0441\u0442\u044c:", None))
