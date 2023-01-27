@@ -4,7 +4,7 @@ import pymysql.cursors
 from pymysql.cursors import DictCursor
 
 
-class DataListDB:
+class DataListDB(MyDb):
 
     def __init__(self):
         super().__init__()
@@ -48,6 +48,22 @@ class DataListDB:
         data = self.unpack_data(data)
         return data
 
+    def get_from_db_students(self):
+        sql = 'select concat(First_Name, " ", Last_Name) as fio from users.students'
+        curr = self.db.cursor()
+        curr.execute(sql)
+        data = curr.fetchall()
+        data = self.unpack_data(data)
+        return data
+
+    def get_from_db_day(self):
+        sql = 'select day from days.days'
+        curr = self.db.cursor()
+        curr.execute(sql)
+        data = curr.fetchall()
+        data = self.unpack_data(data)
+        return data
+
     @staticmethod
     def unpack_data(data):
         unpacked_data = []
@@ -55,3 +71,4 @@ class DataListDB:
             for item in items:
                 unpacked_data.append(items[item])
         return unpacked_data
+

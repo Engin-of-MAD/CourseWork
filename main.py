@@ -1,6 +1,6 @@
 from PySide2.QtWidgets import QMainWindow, QApplication
 from src.dsg.uicode.LoginScreen import LoginScreen
-from src.dsg.Forms.MainForm import MainForm
+from src.dsg.Forms.MainScreen import MainForm
 
 
 class MainScreen(QMainWindow, LoginScreen):
