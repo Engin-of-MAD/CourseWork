@@ -64,11 +64,9 @@ class DataListDB(MyDb):
         data = self.unpack_data(data)
         return data
 
-    @staticmethod
-    def unpack_data(data):
-        unpacked_data = []
-        for it, items in enumerate(data):
-            for item in items:
-                unpacked_data.append(items[item])
-        return unpacked_data
-
+    def get_from_db_schdl_row(self, index):
+        curr = self.db.cursor()
+        sql = f"select * from schdl.schedule where sch_id = {index}"
+        curr.execute(sql)
+        data = curr.fetchone()
+        return data

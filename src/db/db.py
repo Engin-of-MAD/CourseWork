@@ -46,3 +46,11 @@ class MyDb:
         for i in tup:
             uid.append(*i)
         return uid
+
+    @staticmethod
+    def unpack_data(data):
+        unpacked_data = []
+        for it, items in enumerate(data):
+            for item in items:
+                unpacked_data.append(items[item])
+        return unpacked_data

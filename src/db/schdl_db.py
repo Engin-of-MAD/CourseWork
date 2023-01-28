@@ -34,24 +34,6 @@ class SchdlDB(MyDb):
         curr.execute(f"INSERT week_schedule({col}) VALUES({val})")
         self.db.commit()
 
-    def check_user_in_db(self, msg: int = None):
-        uid = str(msg)
-
-        sql_q = f"SELECT st_tg_id FROM week_schedule WHERE st_tg_id = {uid}"
-
-        curr = self.db.cursor()
-        curr.execute(sql_q)
-        db = curr.fetchall()
-        db = dict(*db)
-        state = None
-
-        for key in db:
-            if uid == db[key]:
-                state = True
-            else:
-                state = False
-        return state
-
     def decode(self, data):
         for row, row_data in enumerate(data):
             for index, item in enumerate(row_data):
@@ -141,7 +123,7 @@ class SchdlDB(MyDb):
                         # print(row_data)
         return data
 
-    def send_data_in_schdl(self, data: dict):
+    def send_data(self, data: dict):
         if data["lesson"] != None and data["teacher"] != None and data["day"] != None and data["student"] != None and data["type_lesson"] != None and data["aud"] != None and data["date_time"] != None:
             sql = f"insert into schdl.schedule (lessons, tchr_id, day, " \
                   f"stud_id, type_lessons, aud_id, time) " \
@@ -150,81 +132,217 @@ class SchdlDB(MyDb):
             print(data)
             curr = self.db.cursor()
             curr.execute(sql)
+            self.db.commit()
             print("check")
         else:
             raise ValueError
 
     def code_row(self, data):
         for item in data:
-
             if item == "lesson":
                 label = data[item]
-                if label is not None:
+                if label is not None or label != "NULL":
                     sql = f"select ls_id from lessons.lessons where name_lesson = '{label}'"
                     curr = self.db.cursor()
                     curr.execute(sql)
-                    tmp_data = curr.fetchall()
-                    data[item] = tmp_data[0]["ls_id"]
+                    tmp_data = curr.fetchone()
+                    if tmp_data is None:
+                        tmp_data = "NULL"
+                    else:
+                        print(tmp_data)
+                        data[item] = tmp_data["ls_id"]
                 else:
                     data[item] = "NULL"
 
             if item == "teacher":
                 label = data[item]
-                if label is not None:
-                    first_name, last_name = label.split()
-                    sql = f"select distinct id_employee from users.employee where First_Name = '{first_name}' and Last_Name = '{last_name}' "
-                    curr = self.db.cursor()
-                    curr.execute(sql)
-                    tmp_data = curr.fetchall()
-                    data[item] = tmp_data[0]["id_employee"]
+                if label is not None or label != "NULL":
+                    if isinstance(label, str):
+                        first_name, last_name = label.split()
+                        sql = f"select distinct id_employee from users.employee " \
+                              f"where First_Name = '{first_name}' and Last_Name = '{last_name}'"
+                        curr = self.db.cursor()
+                        curr.execute(sql)
+                        tmp_data = curr.fetchone()
+                        if tmp_data is None:
+                            tmp_data = "NULL"
+                        else:
+                            print(tmp_data)
+                            data[item] = tmp_data["id_employee"]
                 else:
                     data[item] = "NULL"
 
             if item == "day":
                 label = data[item]
-                if label is not None:
+                if label is not None or label != "NULL":
                     sql = f"select id_day from days.days where day = '{label}' "
                     curr = self.db.cursor()
                     curr.execute(sql)
-                    tmp_data = curr.fetchall()
-                    data[item] = tmp_data[0]["id_day"]
+                    tmp_data = curr.fetchone()
+                    if tmp_data is None:
+                        tmp_data = "NULL"
+                    else:
+                        print(tmp_data)
+                        data[item] = tmp_data["id_day"]
                 else:
                     data[item] = "NULL"
 
             if item == "student":
                 label = data[item]
-                if label is not None:
-                    first_name, last_name = label.split()
-                    sql = f"select stud_id from users.students where First_Name = '{first_name}' and Last_Name = '{last_name}'"
-                    curr = self.db.cursor()
-                    curr.execute(sql)
-                    tmp_data = curr.fetchall()
-
-                    data[item] = tmp_data[0]["stud_id"]
-
+                if label is not None or label != "NULL":
+                    if isinstance(label, str):
+                        first_name, last_name = label.split()
+                        sql = f"select stud_id from users.students where First_Name = '{first_name}' and Last_Name = '{last_name}'"
+                        curr = self.db.cursor()
+                        curr.execute(sql)
+                        tmp_data = curr.fetchone()
+                        if tmp_data is None:
+                            tmp_data = "NULL"
+                        else:
+                            print(tmp_data)
+                            data[item] = tmp_data["stud_id"]
                 else:
                     data[item] = "NULL"
 
             if item == "type_lesson":
                 label = data[item]
-                if label is not None:
+                if label is not None or label != "NULL":
                     sql = f"select tpls_id from lessons.types_lessons where type_lesson = '{label}'"
                     curr = self.db.cursor()
                     curr.execute(sql)
-                    tmp_data = curr.fetchall()
-                    data[item] = tmp_data[0]["tpls_id"]
+                    tmp_data = curr.fetchone()
+                    if tmp_data is None:
+                        tmp_data = "NULL"
+                    else:
+                        print(tmp_data)
+                        data[item] = tmp_data["tpls_id"]
+
                 else:
                     data[item] = "NULL"
 
             if item == "aud":
                 label = data[item]
-                if label is not None:
+                if label is not None or label != "NULL":
                     sql = f"select aud_id from auds.auds where aud = '{label}'"
                     curr = self.db.cursor()
                     curr.execute(sql)
-                    tmp_data = curr.fetchall()
-                    data[item] = tmp_data[0]["aud_id"]
+                    tmp_data = curr.fetchone()
+                    if tmp_data is None:
+                        tmp_data = "NULL"
+                    else:
+                        print(tmp_data)
+                        data[item] = tmp_data["aud_id"]
                 else:
                     data[item] = "NULL"
 
         return data
+
+    def decode_row(self, row_data):
+        for index, item in enumerate(row_data):
+            if item == "lessons":
+                label = row_data[item]
+                if label is None:
+                    row_data[item] = "Нет данных"
+                else:
+                    sql = f"select name_lesson from lessons.lessons where ls_id = {label}"
+                    curr = self.db.cursor()
+                    curr.execute(sql)
+                    tmp_data = curr.fetchall()
+                    # print(tmp_data[0]['name_lesson'])
+                    row_data[item] = tmp_data[0]['name_lesson']
+                    # print(row_data)
+
+            if item == "day":
+                label = row_data[item]
+                if label is None:
+                    row_data[item] = "Нет данных"
+                else:
+                    sql = f"select day from days.days where id_day = {label}"
+                    curr = self.db.cursor()
+                    curr.execute(sql)
+                    tmp_data = curr.fetchall()
+                    # print(tmp_data)
+                    # print(tmp_data[0]["day"])
+                    row_data[item] = tmp_data[0]['day']
+                    # print(row_data)
+
+            if item == "type_lessons":
+                label = row_data[item]
+                if label is None:
+                    row_data[item] = "Нет данных"
+                else:
+                    sql = f"select type_lesson from lessons.types_lessons where tpls_id = {label}"
+                    curr = self.db.cursor()
+                    curr.execute(sql)
+                    tmp_data = curr.fetchall()
+                    # print(tmp_data)
+                    # print(tmp_data[0]['type_lesson'])
+                    row_data[item] = tmp_data[0]['type_lesson']
+                    # print(row_data)
+
+            if item == "aud_id":
+                label = row_data[item]
+                if label is None:
+                    row_data[item] = "Нет данных"
+                else:
+                    sql = f"select aud from auds.auds where aud_id = {label}"
+                    curr = self.db.cursor()
+                    curr.execute(sql)
+                    tmp_data = curr.fetchall()
+                    # print(tmp_data)
+                    row_data[item] = tmp_data[0]['aud']
+                    # print(row_data)
+
+            if item == "tchr_id":
+                label = row_data[item]
+                if label is None:
+                    row_data[item] = "Нет данных"
+                else:
+                    sql = f"select concat(First_Name, ' ', Last_Name) as fio from users.employee where post_id = 1"
+                    curr = self.db.cursor()
+                    curr.execute(sql)
+                    tmp_data = curr.fetchall()
+                    row_data[item] = tmp_data[0]["fio"]
+                    # print(row_data)
+
+            if item == "stud_id":
+                label = row_data[item]
+                if label is None:
+                    row_data[item] = "Нет данных"
+                else:
+                    sql = f"select concat(First_Name, ' ', Last_Name) as fio from users.students"
+                    curr = self.db.cursor()
+                    curr.execute(sql)
+                    tmp_data = curr.fetchall()
+                    row_data[item] = tmp_data[0]["fio"]
+                    # print(row_data)
+
+            if item == "time":
+                label = row_data[item]
+                if label is None:
+                    row_data[item] = "Нет данных"
+                    # print(row_data)
+        return row_data
+
+    def update_row(self, data, index_row):
+        curr = self.db.cursor()
+        state = 0
+        for item in data:
+            if data[item] is not None:
+                state += 1
+
+        if state == 7 and index_row != None:
+            print("check")
+            print(data)
+            sql = f"update schdl.schedule " \
+                  f"set " \
+                  f"lessons = {data['lesson']}," \
+                  f"tchr_id = {data['teacher']}," \
+                  f"`day`  = {data['day']}," \
+                  f" stud_id = {data['student']}," \
+                  f"type_lessons = {data['type_lesson']}," \
+                  f"aud_id = {data['aud']}," \
+                  f"time = '{data['date_time']}'" \
+                  f"where sch_id = {index_row}"
+            curr.execute(sql)
+            self.db.commit()

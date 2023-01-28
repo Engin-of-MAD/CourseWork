@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(779, 549)
+        MainWindow.resize(779, 687)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -314,104 +314,35 @@ class Ui_MainWindow(object):
         self.EditSchdl.setObjectName(u"EditSchdl")
         self.gridLayout_7 = QGridLayout(self.EditSchdl)
         self.gridLayout_7.setObjectName(u"gridLayout_7")
-        self.verticalSpacer_16 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.horizontalSpacer_18 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_7.addItem(self.verticalSpacer_16, 2, 1, 1, 1)
-
-        self.pushButton = QPushButton(self.EditSchdl)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setFont(font2)
-
-        self.gridLayout_7.addWidget(self.pushButton, 5, 1, 1, 1)
+        self.gridLayout_7.addItem(self.horizontalSpacer_18, 3, 0, 1, 1)
 
         self.horizontalSpacer_19 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout_7.addItem(self.horizontalSpacer_19, 3, 2, 1, 1)
 
-        self.horizontalSpacer_18 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_7.addItem(self.horizontalSpacer_18, 3, 0, 1, 1)
-
         self.verticalSpacer_14 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout_7.addItem(self.verticalSpacer_14, 4, 1, 1, 1)
+
+        self.update_edit_schdl_btn = QPushButton(self.EditSchdl)
+        self.update_edit_schdl_btn.setObjectName(u"update_edit_schdl_btn")
+        self.update_edit_schdl_btn.setFont(font2)
+
+        self.gridLayout_7.addWidget(self.update_edit_schdl_btn, 5, 1, 1, 1)
+
+        self.verticalSpacer_16 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.gridLayout_7.addItem(self.verticalSpacer_16, 2, 1, 1, 1)
 
         self.verticalSpacer_15 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.gridLayout_7.addItem(self.verticalSpacer_15, 0, 1, 1, 1)
 
-        self.gridLayout_6 = QGridLayout()
-        self.gridLayout_6.setObjectName(u"gridLayout_6")
-        self.gridLayout_6.setHorizontalSpacing(100)
-        self.gridLayout_6.setVerticalSpacing(30)
-        self.lesson_cb_2 = QComboBox(self.EditSchdl)
-        self.lesson_cb_2.setObjectName(u"lesson_cb_2")
-        self.lesson_cb_2.setFont(font4)
+        self.verticalSpacer_22 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.gridLayout_6.addWidget(self.lesson_cb_2, 2, 2, 1, 1)
-
-        self.teacher_cb_2 = QComboBox(self.EditSchdl)
-        self.teacher_cb_2.setObjectName(u"teacher_cb_2")
-        self.teacher_cb_2.setFont(font4)
-
-        self.gridLayout_6.addWidget(self.teacher_cb_2, 3, 2, 1, 1)
-
-        self.audition_2 = QLabel(self.EditSchdl)
-        self.audition_2.setObjectName(u"audition_2")
-        self.audition_2.setFont(font4)
-
-        self.gridLayout_6.addWidget(self.audition_2, 4, 0, 1, 1)
-
-        self.teacher_2 = QLabel(self.EditSchdl)
-        self.teacher_2.setObjectName(u"teacher_2")
-        self.teacher_2.setFont(font4)
-
-        self.gridLayout_6.addWidget(self.teacher_2, 3, 0, 1, 1)
-
-        self.date_lbl_2 = QLabel(self.EditSchdl)
-        self.date_lbl_2.setObjectName(u"date_lbl_2")
-        self.date_lbl_2.setFont(font4)
-
-        self.gridLayout_6.addWidget(self.date_lbl_2, 0, 0, 1, 1)
-
-        self.type_lesson_lbl_2 = QLabel(self.EditSchdl)
-        self.type_lesson_lbl_2.setObjectName(u"type_lesson_lbl_2")
-        sizePolicy.setHeightForWidth(self.type_lesson_lbl_2.sizePolicy().hasHeightForWidth())
-        self.type_lesson_lbl_2.setSizePolicy(sizePolicy)
-        self.type_lesson_lbl_2.setFont(font4)
-
-        self.gridLayout_6.addWidget(self.type_lesson_lbl_2, 1, 0, 1, 1)
-
-        self.aud_cb_2 = QComboBox(self.EditSchdl)
-        self.aud_cb_2.setObjectName(u"aud_cb_2")
-        self.aud_cb_2.setFont(font4)
-
-        self.gridLayout_6.addWidget(self.aud_cb_2, 4, 2, 1, 1)
-
-        self.horizontalSpacer_16 = QSpacerItem(80, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.gridLayout_6.addItem(self.horizontalSpacer_16, 0, 1, 1, 1)
-
-        self.dateTimeEdit_2 = QDateTimeEdit(self.EditSchdl)
-        self.dateTimeEdit_2.setObjectName(u"dateTimeEdit_2")
-        self.dateTimeEdit_2.setFont(font4)
-
-        self.gridLayout_6.addWidget(self.dateTimeEdit_2, 0, 2, 1, 1)
-
-        self.type_lesson_cb_2 = QComboBox(self.EditSchdl)
-        self.type_lesson_cb_2.setObjectName(u"type_lesson_cb_2")
-        self.type_lesson_cb_2.setFont(font4)
-
-        self.gridLayout_6.addWidget(self.type_lesson_cb_2, 1, 2, 1, 1)
-
-        self.lessob_lbl_2 = QLabel(self.EditSchdl)
-        self.lessob_lbl_2.setObjectName(u"lessob_lbl_2")
-        self.lessob_lbl_2.setFont(font4)
-
-        self.gridLayout_6.addWidget(self.lessob_lbl_2, 2, 0, 1, 1)
-
-
-        self.gridLayout_7.addLayout(self.gridLayout_6, 3, 1, 1, 1)
+        self.gridLayout_7.addItem(self.verticalSpacer_22, 6, 1, 1, 1)
 
         self.label_3 = QLabel(self.EditSchdl)
         self.label_3.setObjectName(u"label_3")
@@ -420,9 +351,180 @@ class Ui_MainWindow(object):
 
         self.gridLayout_7.addWidget(self.label_3, 1, 1, 1, 1)
 
-        self.verticalSpacer_22 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.gridLayout_6 = QGridLayout()
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.gridLayout_6.setHorizontalSpacing(100)
+        self.gridLayout_6.setVerticalSpacing(30)
+        self.old_aud_lbl = QLabel(self.EditSchdl)
+        self.old_aud_lbl.setObjectName(u"old_aud_lbl")
+        self.old_aud_lbl.setFont(font4)
 
-        self.gridLayout_7.addItem(self.verticalSpacer_22, 6, 1, 1, 1)
+        self.gridLayout_6.addWidget(self.old_aud_lbl, 7, 2, 1, 1)
+
+        self.stud_cb_edit = QComboBox(self.EditSchdl)
+        self.stud_cb_edit.setObjectName(u"stud_cb_edit")
+        self.stud_cb_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.stud_cb_edit, 9, 1, 1, 1)
+
+        self.day_lbl_edit = QLabel(self.EditSchdl)
+        self.day_lbl_edit.setObjectName(u"day_lbl_edit")
+        self.day_lbl_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.day_lbl_edit, 8, 0, 1, 1)
+
+        self.stud_lb_editl = QLabel(self.EditSchdl)
+        self.stud_lb_editl.setObjectName(u"stud_lb_editl")
+        self.stud_lb_editl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.stud_lb_editl, 9, 0, 1, 1)
+
+        self.day_cb_edit = QComboBox(self.EditSchdl)
+        self.day_cb_edit.setObjectName(u"day_cb_edit")
+        self.day_cb_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.day_cb_edit, 8, 1, 1, 1)
+
+        self.lesson_cb_edit = QComboBox(self.EditSchdl)
+        self.lesson_cb_edit.setObjectName(u"lesson_cb_edit")
+        self.lesson_cb_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.lesson_cb_edit, 5, 1, 1, 1)
+
+        self.old_day_lbl = QLabel(self.EditSchdl)
+        self.old_day_lbl.setObjectName(u"old_day_lbl")
+        self.old_day_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.old_day_lbl, 8, 2, 1, 1)
+
+        self.teacher_cb_edit = QComboBox(self.EditSchdl)
+        self.teacher_cb_edit.setObjectName(u"teacher_cb_edit")
+        self.teacher_cb_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.teacher_cb_edit, 6, 1, 1, 1)
+
+        self.teacher_edit_lbl = QLabel(self.EditSchdl)
+        self.teacher_edit_lbl.setObjectName(u"teacher_edit_lbl")
+        self.teacher_edit_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.teacher_edit_lbl, 6, 0, 1, 1)
+
+        self.type_lesson_lbl_edit = QLabel(self.EditSchdl)
+        self.type_lesson_lbl_edit.setObjectName(u"type_lesson_lbl_edit")
+        sizePolicy.setHeightForWidth(self.type_lesson_lbl_edit.sizePolicy().hasHeightForWidth())
+        self.type_lesson_lbl_edit.setSizePolicy(sizePolicy)
+        self.type_lesson_lbl_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.type_lesson_lbl_edit, 4, 0, 1, 1)
+
+        self.date_lbl_edit = QLabel(self.EditSchdl)
+        self.date_lbl_edit.setObjectName(u"date_lbl_edit")
+        self.date_lbl_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.date_lbl_edit, 3, 0, 1, 1)
+
+        self.aud_lbl_edit = QLabel(self.EditSchdl)
+        self.aud_lbl_edit.setObjectName(u"aud_lbl_edit")
+        self.aud_lbl_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.aud_lbl_edit, 7, 0, 1, 1)
+
+        self.type_lesson_cb_edit = QComboBox(self.EditSchdl)
+        self.type_lesson_cb_edit.setObjectName(u"type_lesson_cb_edit")
+        self.type_lesson_cb_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.type_lesson_cb_edit, 4, 1, 1, 1)
+
+        self.aud_cb_edit = QComboBox(self.EditSchdl)
+        self.aud_cb_edit.setObjectName(u"aud_cb_edit")
+        self.aud_cb_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.aud_cb_edit, 7, 1, 1, 1)
+
+        self.dateTime_edit = QDateTimeEdit(self.EditSchdl)
+        self.dateTime_edit.setObjectName(u"dateTime_edit")
+        self.dateTime_edit.setFont(font4)
+        self.dateTime_edit.setProperty("showGroupSeparator", False)
+        self.dateTime_edit.setCalendarPopup(True)
+        self.dateTime_edit.setCurrentSectionIndex(0)
+
+        self.gridLayout_6.addWidget(self.dateTime_edit, 3, 1, 1, 1)
+
+        self.lessob_lbl_edit = QLabel(self.EditSchdl)
+        self.lessob_lbl_edit.setObjectName(u"lessob_lbl_edit")
+        self.lessob_lbl_edit.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.lessob_lbl_edit, 5, 0, 1, 1)
+
+        self.old_type_lesson_lbl = QLabel(self.EditSchdl)
+        self.old_type_lesson_lbl.setObjectName(u"old_type_lesson_lbl")
+        self.old_type_lesson_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.old_type_lesson_lbl, 4, 2, 1, 1)
+
+        self.old_teacher_lbl = QLabel(self.EditSchdl)
+        self.old_teacher_lbl.setObjectName(u"old_teacher_lbl")
+        self.old_teacher_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.old_teacher_lbl, 6, 2, 1, 1)
+
+        self.new_values_lbl = QLabel(self.EditSchdl)
+        self.new_values_lbl.setObjectName(u"new_values_lbl")
+        self.new_values_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.new_values_lbl, 1, 1, 1, 1)
+
+        self.old_values_lbl = QLabel(self.EditSchdl)
+        self.old_values_lbl.setObjectName(u"old_values_lbl")
+        self.old_values_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.old_values_lbl, 1, 2, 1, 1)
+
+        self.old_date_time = QLabel(self.EditSchdl)
+        self.old_date_time.setObjectName(u"old_date_time")
+        self.old_date_time.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.old_date_time, 3, 2, 1, 1)
+
+        self.old_lessons_lbl = QLabel(self.EditSchdl)
+        self.old_lessons_lbl.setObjectName(u"old_lessons_lbl")
+        self.old_lessons_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.old_lessons_lbl, 5, 2, 1, 1)
+
+        self.old_stud_lbl = QLabel(self.EditSchdl)
+        self.old_stud_lbl.setObjectName(u"old_stud_lbl")
+        self.old_stud_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.old_stud_lbl, 9, 2, 1, 1)
+
+        self.num_row_lbl = QLabel(self.EditSchdl)
+        self.num_row_lbl.setObjectName(u"num_row_lbl")
+        self.num_row_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.num_row_lbl, 2, 0, 1, 1)
+
+        self.num_row_sb = QSpinBox(self.EditSchdl)
+        self.num_row_sb.setObjectName(u"num_row_sb")
+        self.num_row_sb.setFont(font4)
+        self.num_row_sb.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_6.addWidget(self.num_row_sb, 2, 1, 1, 1)
+
+        self.values = QLabel(self.EditSchdl)
+        self.values.setObjectName(u"values")
+        self.values.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.values, 1, 0, 1, 1)
+
+        self.row_state_lbl = QLabel(self.EditSchdl)
+        self.row_state_lbl.setObjectName(u"row_state_lbl")
+        self.row_state_lbl.setFont(font4)
+
+        self.gridLayout_6.addWidget(self.row_state_lbl, 2, 2, 1, 1)
+
+
+        self.gridLayout_7.addLayout(self.gridLayout_6, 3, 1, 1, 1)
 
         self.stackedWidget.addWidget(self.EditSchdl)
         self.WriteOnService = QWidget()
@@ -662,7 +764,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -709,13 +811,27 @@ class Ui_MainWindow(object):
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0447\u0435\u043d\u0438\u043a", None))
         self.send_btn.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c", None))
-        self.audition_2.setText(QCoreApplication.translate("MainWindow", u"\u0410\u0443\u0434\u0438\u0442\u043e\u0440\u0438\u044f", None))
-        self.teacher_2.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c", None))
-        self.date_lbl_2.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u0438 \u0412\u0440\u0435\u043c\u044f:", None))
-        self.type_lesson_lbl_2.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0438\u043f \u0417\u0430\u043d\u044f\u0442\u0438\u0439", None))
-        self.lessob_lbl_2.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043d\u044f\u0442\u0438\u0435", None))
+        self.update_edit_schdl_btn.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0434\u0430\u043a\u0442\u0440\u043e\u0432\u0430\u0442\u044c", None))
+        self.old_aud_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445", None))
+        self.day_lbl_edit.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0435\u043d\u044c", None))
+        self.stud_lb_editl.setText(QCoreApplication.translate("MainWindow", u"\u0423\u0447\u0435\u043d\u0438\u043a", None))
+        self.old_day_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445", None))
+        self.teacher_edit_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u0435\u043f\u043e\u0434\u0430\u0432\u0430\u0442\u0435\u043b\u044c", None))
+        self.type_lesson_lbl_edit.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0438\u043f \u0417\u0430\u043d\u044f\u0442\u0438\u0439", None))
+        self.date_lbl_edit.setText(QCoreApplication.translate("MainWindow", u"\u0414\u0430\u0442\u0430 \u0438 \u0412\u0440\u0435\u043c\u044f", None))
+        self.aud_lbl_edit.setText(QCoreApplication.translate("MainWindow", u"\u0410\u0443\u0434\u0438\u0442\u043e\u0440\u0438\u044f", None))
+        self.lessob_lbl_edit.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u043d\u044f\u0442\u0438\u0435", None))
+        self.old_type_lesson_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445", None))
+        self.old_teacher_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445", None))
+        self.new_values_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u0432\u044b\u0435 \u0417\u043d\u0430\u0447\u0435\u043d\u0438\u044f:", None))
+        self.old_values_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0442\u0430\u0440\u044b\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f:", None))
+        self.old_date_time.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445", None))
+        self.old_lessons_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445", None))
+        self.old_stud_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445", None))
+        self.num_row_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041d\u043e\u043c\u0435\u0440 \u0421\u0442\u0440\u043e\u043a\u0438", None))
+        self.values.setText(QCoreApplication.translate("MainWindow", u"\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u044f:", None))
+        self.row_state_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0445", None))
         self.feedback_lbl.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u0437\u044b\u0432", None))
         self.type_of_service_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0438\u043f \u0423\u0441\u043b\u0443\u0433\u0438", None))
         self.executor_lbl.setText(QCoreApplication.translate("MainWindow", u"\u0418\u0441\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c", None))
