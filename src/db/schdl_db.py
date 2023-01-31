@@ -97,7 +97,8 @@ class SchdlDB(MyDb):
                     if label is None:
                         row_data[item] = "Нет данных"
                     else:
-                        sql = f"select concat(First_Name, ' ', Last_Name) as fio from users.employee where post_id = 1"
+                        sql = f"select concat(First_Name, ' ', Last_Name) as fio from users.employee " \
+                              f"where post_id = 1 and id_employee = {label}"
                         curr = self.db.cursor()
                         curr.execute(sql)
                         tmp_data = curr.fetchall()
@@ -109,7 +110,8 @@ class SchdlDB(MyDb):
                     if label is None:
                         row_data[item] = "Нет данных"
                     else:
-                        sql = f"select concat(First_Name, ' ', Last_Name) as fio from users.students"
+                        sql = f"select concat(First_Name, ' ', Last_Name) as fio from users.students " \
+                              f"where stud_id = {label}"
                         curr = self.db.cursor()
                         curr.execute(sql)
                         tmp_data = curr.fetchall()
@@ -124,16 +126,18 @@ class SchdlDB(MyDb):
         return data
 
     def send_data(self, data: dict):
-        if data["lesson"] != None and data["teacher"] != None and data["day"] != None and data["student"] != None and data["type_lesson"] != None and data["aud"] != None and data["date_time"] != None:
+        if data["lesson"] != None and data["teacher"] != None and data["day"] != None and data[
+            "student"] != None and data["type_lesson"] != None and data[
+            "aud"] != None and data["date_time"] != None:
             sql = f"insert into schdl.schedule (lessons, tchr_id, day, " \
                   f"stud_id, type_lessons, aud_id, time) " \
                   f"values({data['lesson']}, {data['teacher']}, {data['day']}," \
                   f" {data['student']}, {data['type_lesson']}, {data['aud']}, '{data['date_time']}')"
-            print(data)
+
             curr = self.db.cursor()
             curr.execute(sql)
             self.db.commit()
-            print("check")
+
         else:
             raise ValueError
 
@@ -149,7 +153,6 @@ class SchdlDB(MyDb):
                     if tmp_data is None:
                         tmp_data = "NULL"
                     else:
-                        print(tmp_data)
                         data[item] = tmp_data["ls_id"]
                 else:
                     data[item] = "NULL"
@@ -167,7 +170,7 @@ class SchdlDB(MyDb):
                         if tmp_data is None:
                             tmp_data = "NULL"
                         else:
-                            print(tmp_data)
+
                             data[item] = tmp_data["id_employee"]
                 else:
                     data[item] = "NULL"
@@ -182,7 +185,6 @@ class SchdlDB(MyDb):
                     if tmp_data is None:
                         tmp_data = "NULL"
                     else:
-                        print(tmp_data)
                         data[item] = tmp_data["id_day"]
                 else:
                     data[item] = "NULL"
@@ -199,7 +201,6 @@ class SchdlDB(MyDb):
                         if tmp_data is None:
                             tmp_data = "NULL"
                         else:
-                            print(tmp_data)
                             data[item] = tmp_data["stud_id"]
                 else:
                     data[item] = "NULL"
@@ -214,7 +215,6 @@ class SchdlDB(MyDb):
                     if tmp_data is None:
                         tmp_data = "NULL"
                     else:
-                        print(tmp_data)
                         data[item] = tmp_data["tpls_id"]
 
                 else:
@@ -230,7 +230,6 @@ class SchdlDB(MyDb):
                     if tmp_data is None:
                         tmp_data = "NULL"
                     else:
-                        print(tmp_data)
                         data[item] = tmp_data["aud_id"]
                 else:
                     data[item] = "NULL"
@@ -303,7 +302,6 @@ class SchdlDB(MyDb):
                     curr.execute(sql)
                     tmp_data = curr.fetchall()
                     row_data[item] = tmp_data[0]["fio"]
-                    # print(row_data)
 
             if item == "stud_id":
                 label = row_data[item]
@@ -322,6 +320,7 @@ class SchdlDB(MyDb):
                 if label is None:
                     row_data[item] = "Нет данных"
                     # print(row_data)
+
         return row_data
 
     def update_row(self, data, index_row):
@@ -333,7 +332,7 @@ class SchdlDB(MyDb):
 
         if state == 7 and index_row != None:
             print("check")
-            print(data)
+
             sql = f"update schdl.schedule " \
                   f"set " \
                   f"lessons = {data['lesson']}," \
@@ -346,3 +345,10 @@ class SchdlDB(MyDb):
                   f"where sch_id = {index_row}"
             curr.execute(sql)
             self.db.commit()
+
+    def get_from_db_schdl_row(self, index):
+        curr = self.db.cursor()
+        sql = f"select * from schdl.schedule where sch_id = {index}"
+        curr.execute(sql)
+        data = curr.fetchone()
+        return data

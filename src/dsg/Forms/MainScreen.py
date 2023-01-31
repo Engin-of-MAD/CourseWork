@@ -10,6 +10,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
 
     def __init__(self):
         super().__init__()
+        self.data = None
         self.send_data = dict(date_time=None,
                               type_lesson=None,
                               lesson=None,
@@ -37,14 +38,13 @@ class MainForm(QMainWindow, Ui_MainWindow):
         self.init_schdl_tb()
         self.setup_edit_schdl_screen()
         self.stackedWidget.setCurrentIndex(0)
-
-
         # self.showFullScreen()
 
         self.edit_screen_schdl_slots()
         self.add_schdl_screen_slots()
         self.menubar_slots()
-
+        self.error_edit_lbl.hide()
+        self.error_add_lbl.hide()
         self.begin_work.clicked.connect(self.show_schdl)
         self.schdl_upd_tb.clicked.connect(self.update_lesson_schdl_tb)
 
@@ -84,16 +84,17 @@ class MainForm(QMainWindow, Ui_MainWindow):
         self.aud_cb_edit.activated[str].connect(self.set_update_data_aud)
 
         self.dateTime_edit.dateTimeChanged.connect(self.set_update_data_time_data)
+        self.dateTime_edit.setDisplayFormat("yyyy-MM-dd hh:mm")
+        self.dateTime_edit.setMinimumDateTime(QDateTime().currentDateTime())
+
         self.update_edit_schdl_btn.clicked.connect(self.change_old_data_schdl)
 
     ##########################################################################################
 
     def set_update_data_teachers(self, teacher):
-        print(teacher)
         self.update_data.update(teacher=teacher)
 
     def set_update_data_students(self, student):
-        print(student)
         self.update_data.update(student=student)
 
     def set_update_data_time_data(self):
@@ -183,8 +184,7 @@ class MainForm(QMainWindow, Ui_MainWindow):
                     col = 0
 
     def update_old_data_schdl(self):
-        db = self.db_data_list
-        data = db.get_from_db_schdl_row(self.num_row_sb.value())
+        data = self.db_schdl.get_from_db_schdl_row(self.num_row_sb.value())
 
         if data is None:
             self.row_state_lbl.setText("Нет данных")
@@ -305,13 +305,26 @@ class MainForm(QMainWindow, Ui_MainWindow):
             code_data = db.code_row(self.send_data)
             print(code_data)
             db.send_data(code_data)
+            self.error_add_lbl.setText("Данные отправлены")
+            self.error_add_lbl.setStyleSheet("color: green")
         else:
-            print("Ошибка")
+            self.error_add_lbl.show()
+            self.error_add_lbl.setStyleSheet("color: red")
 
     def change_old_data_schdl(self):
-        db = self.db_schdl
-        data = self.update_data
+        if self.update_data['aud'] is not None and self.update_data['teacher'] is not None and self.update_data[
+            'type_lesson'] is not None and self.update_data['lesson'] is not None:
+            db = self.db_schdl
+            data_update = self.update_data
+            data_update = db.code_row(data_update)
+            db.update_row(data_update, self.num_row_sb.value())
+            index = self.num_row_sb.value()
+            print(f'index: {self.num_row_sb.value()}')
+            self.error_edit_lbl.setText("Данные изменены")
+            self.error_edit_lbl.setStyleSheet("color: green")
+            self.error_edit_lbl.show()
+        else:
+            print(self.update_data)
+            self.error_edit_lbl.show()
+            self.error_edit_lbl.setStyleSheet("color: red")
 
-        data = db.code_row(data)
-        print("click")
-        db.update_row(data, self.num_row_sb.value())
